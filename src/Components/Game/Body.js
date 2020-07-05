@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Results from "./Results";
 import LeagueTable from "./LeagueTable";
-import { device } from "../../Objects/devices";
+import { device } from "../../objects/devices";
 import styled from "styled-components";
 
 const BodyDivStyle = styled.div`
@@ -18,7 +18,7 @@ const BodyDivStyle = styled.div`
   }
 `;
 
-const Body = (props) => {
+const Body = () => {
   return (
     <BodyDivStyle>
       <Switch>

@@ -7,9 +7,9 @@ const LiveStyle = styled.div`
   justify-content: center;
   justify-self: center;
   align-self: center;
-  padding: 3px 6px;
+  padding: 2px 5px;
   color: #fff;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 500;
   margin: 0px 8px;
   background-color: #eb2c2d;

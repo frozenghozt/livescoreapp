@@ -1,9 +1,11 @@
-import React from "react";
-import { device } from "../../Objects/devices";
-import { connect } from "react-redux";
-import LeagueHeader from "./../Small Components/LeagueHeader";
-import MatchResult from "./../Small Components/MatchResult";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { device } from "../../objects/devices";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import IosArrowDown from "react-ionicons/lib/IosArrowDown";
+import MatchResult from "../Small Components/MatchResult";
+import LiveSignal from "./../Small Components/LiveSignal";
 
 const LeagueDivStyle = styled.div`
   display: flex;
@@ -19,39 +21,97 @@ const LeagueDivStyle = styled.div`
   }
 `;
 
-const HeaderDivStyle = styled.div`
-  display: flex;
-  padding: 1px 5px 0px;
-`;
-
 const BodyDivStyle = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0px 5px;
+`;
+
+const HeaderDivStyle = styled.div`
+  display: grid;
+  grid-template-columns: 80% 20%;
+  padding: 1px 5px 0px;
+  width: 100%;
+  margin: 4px 0px 6px;
+`;
+
+const LeagueNameStyle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  align-self: center;
+  color: #fff;
+  font-size: 14px;
+  & img {
+    height: auto;
+    width: 19px;
+    margin-right: 6px;
+  }
 `;
 
 const League = (props) => {
-  const show = props.showleague.showmore;
+  const [collapse, setCollapse] = useState(() => {
+    const fromStorage = sessionStorage.getItem(`${props.name}OpenLocal`);
+    return fromStorage == null ? true : JSON.parse(fromStorage);
+  });
+
+  const data = useSelector((state) => state.todaysLeagueData);
+
+  useEffect(() => {
+    sessionStorage.setItem(`${props.name}OpenLocal`, collapse);
+  }, [collapse, props.name]);
+
   return (
     <LeagueDivStyle>
       <HeaderDivStyle>
-        <LeagueHeader />
+        <LeagueNameStyle>
+          <img src={props.logo} alt="" />
+          <span>{props.name}</span>
+          {data.matches.some((each) => {
+            return (
+              each.competition.name === props.name && each.status === "IN_PLAY"
+            );
+          }) ? (
+            <LiveSignal />
+          ) : null}
+        </LeagueNameStyle>
+        <IosArrowDown
+          style={{
+            cursor: "pointer",
+            justifySelf: "end",
+            alignSelf: "center",
+          }}
+          color="#FFF"
+          fontSize="18px"
+          onClick={() => setCollapse(!collapse)}
+        />
       </HeaderDivStyle>
-      {show ? (
+      {collapse ? (
         <BodyDivStyle>
-          <MatchResult />
-          <MatchResult />
+          {data.matches.map((elem, index) => {
+            return elem.competition.name === props.name ? (
+              <MatchResult
+                key={index}
+                id={elem.id}
+                time={elem.utcDate}
+                status={elem.status}
+                hometeam={elem.homeTeam.name}
+                awayteam={elem.awayTeam.name}
+                winner={elem.score.winner}
+                homescore={elem.score.fullTime.homeTeam}
+                awayscore={elem.score.fullTime.awayTeam}
+              />
+            ) : null;
+          })}
         </BodyDivStyle>
       ) : null}
     </LeagueDivStyle>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    showleague: state.showmore,
-  };
+League.propTypes = {
+  name: PropTypes.string,
+  logo: PropTypes.string,
 };
 
-export default connect(mapStateToProps)(League);
+export default League;

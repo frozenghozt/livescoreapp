@@ -7,20 +7,29 @@ const GoBackDivStyle = styled.div`
   display: flex;
   color: #fff;
   align-items: center;
-  margin-bottom: 15px;
+`;
+
+const GoBackStyle = styled.div`
+  display: flex;
+  cursor: pointer;
   & span {
     color: #fff;
     margin-left: 5px;
     font-size: 14px;
   }
+  margin-bottom: 12px;
 `;
 
 const GoBack = () => {
   let history = useHistory();
   return (
-    <GoBackDivStyle onClick={() => history.go(-1)}>
-      <MdArrowBack color="#FFF" fontSize="18px" />
-      <span>Go Back</span>
+    <GoBackDivStyle>
+      {history.length > 2 ? (
+        <GoBackStyle onClick={() => history.goBack()}>
+          <MdArrowBack color="#FFF" fontSize="18px" />
+          <span>Go Back</span>
+        </GoBackStyle>
+      ) : null}
     </GoBackDivStyle>
   );
 };

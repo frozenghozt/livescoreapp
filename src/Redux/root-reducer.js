@@ -1,7 +1,4 @@
 import { combineReducers } from "redux";
-import { showReducer, showFavReducer } from "./Reducers/show.reducer";
+import * as allReducers from "./Reducers";
 
-export default combineReducers({
-  showmore: showReducer,
-  showfavmore: showFavReducer,
-});
+export default combineReducers(allReducers);

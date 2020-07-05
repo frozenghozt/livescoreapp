@@ -1,0 +1,48 @@
+import axios from "axios";
+import {
+  API,
+  accessDenied,
+  apiError,
+  apiStart,
+  apiEnd,
+} from "../Actions/apiFootball.actions";
+
+const apiMiddleware = ({ dispatch }) => (next) => (action) => {
+  next(action);
+
+  if (action.type !== API) return;
+
+  const { url, onSuccess, onFailure, label, headers } = action.payload;
+
+  // axios default configs
+  axios.defaults.headers.common["Content-Type"] = "application/json";
+
+  if (label) {
+    dispatch(apiStart(label));
+  }
+
+  axios
+    .request({
+      url,
+      method: "GET",
+      headers,
+    })
+    .then(({ data }) => {
+      dispatch(onSuccess(data));
+    })
+    .catch((error) => {
+      dispatch(apiError(error));
+      dispatch(onFailure(error));
+
+      if (error.response && error.response.status === 403) {
+        dispatch(accessDenied(window.location.pathname));
+      }
+    })
+    .finally(() => {
+      if (label) {
+        dispatch(apiEnd(label));
+      }
+    });
+};
+
+export default apiMiddleware;

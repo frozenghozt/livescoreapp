@@ -1,5 +1,5 @@
 import React from "react";
-import { device } from "./../../Objects/devices";
+import { device } from "./../../objects/devices";
 import styled from "styled-components";
 import GoBack from "./../Small Components/GoBack";
 import TableHeader from "./../Small Components/TableHeader";

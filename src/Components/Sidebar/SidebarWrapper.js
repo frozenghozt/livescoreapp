@@ -2,7 +2,7 @@ import React from "react";
 import SidebarHeader from "./SidebarHeader";
 import SidebarMajor from "./SidebarMajor";
 import SidebarMinor from "./SidebarMinor";
-import { device } from "../../Objects/devices";
+import { device } from "../../objects/devices";
 import styled from "styled-components";
 
 const SidebarDivStyle = styled.div`

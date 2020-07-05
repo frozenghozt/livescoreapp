@@ -3,7 +3,7 @@ import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 import ChatSubmit from "./ChatSubmit";
 import styled from "styled-components";
-import { device } from "../../Objects/devices";
+import { device } from "../../objects/devices";
 
 const ChatDivStyle = styled.div`
   display: flex;
