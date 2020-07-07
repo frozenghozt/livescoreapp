@@ -9,7 +9,7 @@ const LiveStyle = styled.div`
   align-self: center;
   padding: 2px 5px;
   color: #fff;
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 500;
   margin: 0px 8px;
   background-color: #eb2c2d;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import FavMatchResult from "./../Small Components/FavMatchResult";
+import FavMatchResult from "../Small Components/FavMatchResult";
 import styled from "styled-components";
 import MdStar from "react-ionicons/lib/MdStar";
 import IosArrowDown from "react-ionicons/lib/IosArrowDown";
@@ -22,7 +22,6 @@ const BodyDivStyle = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0px 5px;
 `;
 
 const HeaderDivStyle = styled.div`
@@ -47,6 +46,16 @@ const FavMatches = () => {
   return (
     <FavDivStyle>
       <HeaderDivStyle>
+        {/* <MdStar
+          style={{
+            cursor: "pointer",
+            justifySelf: "start",
+            alignSelf: "center",
+            marginBottom: "2px",
+          }}
+          color="#F4E122"
+          fontSize="18px"
+        /> */}
         <MdStar
           style={{
             cursor: "pointer",

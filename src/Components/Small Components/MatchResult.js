@@ -35,7 +35,10 @@ const ResultStyle = styled.span`
   align-items: center;
   justify-self: center;
   align-self: center;
-  padding: 3px 6px;
+  font-weight: 500;
+  background-color: rgba(25, 44, 56, 0.4);
+  min-width: 40px;
+  padding: 3px 3px;
   border-radius: 3px;
   color: #fff;
   font-size: 13px;
@@ -82,7 +85,7 @@ const MatchResult = ({
       >
         {hometeam}
       </TeamOne>
-      <ResultStyle>
+      <ResultStyle style={{ color: status === "IN_PLAY" ? "red" : null }}>
         {homescore} - {awayscore}
       </ResultStyle>
       <TeamTwo

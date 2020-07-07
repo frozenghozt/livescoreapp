@@ -5,6 +5,7 @@ import { deleteFavMatch } from "../../Redux/Actions";
 import styled from "styled-components";
 import { device } from "../../objects/devices";
 import MdStar from "react-ionicons/lib/MdStar";
+import { shortener } from "./../../objects/shortener";
 
 const EachLeagueStyle = styled.div`
   display: grid;
@@ -34,11 +35,12 @@ const ResultStyle = styled.span`
   align-items: center;
   justify-self: center;
   align-self: center;
-  text-align: center;
-  padding: 4px 6px;
+  font-weight: 500;
+  background-color: rgba(25, 44, 56, 0.4);
+  min-width: 40px;
+  padding: 3px 3px;
   border-radius: 3px;
   color: #fff;
-  background-color: rgba(25, 44, 56, 0.55);
   font-size: 13px;
 `;
 
@@ -70,11 +72,25 @@ const FavMatchResult = ({
   return (
     <EachLeagueStyle>
       <TimerStyle>{time.slice(11, -4)}</TimerStyle>
-      <TeamOne>{hometeam}</TeamOne>
-      <ResultStyle>
+      <TeamOne
+        style={{
+          fontWeight:
+            winner === "HOME_TEAM" && status === "FINISHED" ? "500" : "",
+        }}
+      >
+        {shortener(hometeam)}
+      </TeamOne>
+      <ResultStyle style={{ color: status === "IN_PLAY" ? "red" : null }}>
         {homescore} - {awayscore}
       </ResultStyle>
-      <TeamTwo>{awayteam}</TeamTwo>
+      <TeamTwo
+        style={{
+          fontWeight:
+            winner === "AWAY_TEAM" && status === "FINISHED" ? "500" : "",
+        }}
+      >
+        {shortener(awayteam)}
+      </TeamTwo>
       <MdStar
         style={{
           cursor: "pointer",
