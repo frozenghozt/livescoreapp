@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTodaysLeagueData } from "../../Redux/Actions";
 import { device } from "../../objects/devices";
-// import FavMatches from "./FavMatches";
+import FavMatches from "./FavMatches";
 import League from "./League";
 import ResultsLoader from "./../Small Components/ResultsLoader";
 import styled from "styled-components";
@@ -43,7 +43,7 @@ const Results = () => {
   );
   return (
     <ResultsDivStyle>
-      {/* <FavMatches /> */}
+      <FavMatches />
       {data.count < 1 ? (
         <ResultsLoader
           style={{ width: "100%", height: "100%", margin: "5px 0px" }}

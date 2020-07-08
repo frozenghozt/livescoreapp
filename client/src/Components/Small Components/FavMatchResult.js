@@ -69,9 +69,12 @@ const FavMatchResult = ({
   awayscore,
 }) => {
   const dispatch = useDispatch();
+  console.log(status);
   return (
     <EachLeagueStyle>
-      <TimerStyle>{time.slice(11, -4)}</TimerStyle>
+      <TimerStyle>
+        {status === "SCHEDULED" ? time.slice(11, -4) : status}
+      </TimerStyle>
       <TeamOne
         style={{
           fontWeight:
