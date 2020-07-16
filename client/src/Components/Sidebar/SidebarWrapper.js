@@ -12,7 +12,6 @@ const SidebarDivStyle = styled.div`
   flex-shrink: 0;
   height: 100vh;
   padding: 0px 25px;
-  z-index: 900;
   background-color: #0f212e;
   @media ${device.tablet} {
     display: none;

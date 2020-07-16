@@ -19,7 +19,7 @@ const EachLeagueStyle = styled.div`
     background-color: rgba(25, 44, 56, 0.8);
   }
   @media ${device.tablet} {
-    grid-template-columns: 55px auto 60px auto 20px;
+    grid-template-columns: 40px 1fr 40px 1fr 40px;
   }
 `;
 
@@ -75,7 +75,7 @@ const MatchResult = ({
   return (
     <EachLeagueStyle>
       <TimerStyle>
-        {status === "SCHEDULED" ? time.slice(11, -4) : status}
+        {status === "SCHEDULED" ? time.slice(11, 16) : status}
       </TimerStyle>
 
       <TeamOne

@@ -11,7 +11,6 @@ const ChatDivStyle = styled.div`
   width: 350px;
   flex-shrink: 0;
   height: 100vh;
-  z-index: 900;
   background-color: #0f212e;
   @media ${device.laptop} {
     display: none;

@@ -1,3 +1,5 @@
+/* Match Result fade animation */
+
 .fade-enter {
   opacity: 0;
 }
@@ -11,4 +13,32 @@
 .fade-exit-active {
   opacity: 0;
   transition: opacity 350ms;
+}
+
+/* Search box animation */
+
+@keyframes widthreduce {
+  0% {
+    width: 65%;
+  }
+  100% {
+    width: 60%;
+  }
+}
+
+@keyframes withenlarge {
+  0% {
+    width: 60%;
+  }
+  100% {
+    width: 65%;
+  }
+}
+
+.searchenlarge {
+  animation: withenlarge 0.5s ease-out forwards;
+}
+
+.searchreduce {
+  animation: widthreduce 0.5s ease-out;
 }

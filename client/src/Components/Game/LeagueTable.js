@@ -26,7 +26,6 @@ const TableDivStyle = styled.div`
 `;
 
 const LeagueTable = (props) => {
-  console.log(props);
   return (
     <TableDivContainer>
       <GoBack />

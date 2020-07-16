@@ -11,7 +11,7 @@ const ResultsDivStyle = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 15px 2vw;
+  padding: 20px 0px;
   align-items: center;
   position: relative;
   @media ${device.mobileL} {
@@ -27,7 +27,6 @@ const Results = () => {
   }, [dispatch]);
 
   const data = useSelector((state) => state.todaysLeagueData);
-  console.log(data);
 
   const ids = data.matches.map((elem) => {
     return [
@@ -41,6 +40,7 @@ const Results = () => {
     new Set(ids.map(JSON.stringify)),
     JSON.parse
   );
+
   return (
     <ResultsDivStyle>
       <FavMatches />

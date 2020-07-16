@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
@@ -15,7 +16,7 @@ const GameDivStyle = styled.div`
 const GameWrapper = () => {
   return (
     <GameDivStyle>
-      <Header />
+      <Route path="/" render={(props) => <Header {...props} />} />
       <Body />
       <Footer />
     </GameDivStyle>

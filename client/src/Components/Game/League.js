@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { device } from "../../objects/devices";
 import PropTypes from "prop-types";
@@ -40,12 +41,27 @@ const LeagueNameStyle = styled.div`
   align-items: center;
   justify-self: start;
   align-self: center;
-  color: #fff;
-  font-size: 14px;
+  & span {
+    color: #fff;
+    font-size: 14px;
+  }
   & img {
     height: auto;
     width: 19px;
     margin-right: 6px;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
   }
 `;
 
@@ -66,7 +82,9 @@ const League = (props) => {
       <HeaderDivStyle>
         <LeagueNameStyle>
           <img src={props.logo} alt="" />
-          <span>{props.name}</span>
+          <StyledLink to={`/${props.name}`.replace(/\s/g, "").toLowerCase()}>
+            <span>{props.name}</span>
+          </StyledLink>
           {data.matches.some((each) => {
             return (
               each.competition.name === props.name && each.status === "IN_PLAY"

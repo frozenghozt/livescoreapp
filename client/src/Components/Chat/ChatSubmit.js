@@ -41,26 +41,6 @@ const SendMessage = styled.div`
   }
 `;
 
-const Buttons = styled.div`
-  display: flex;
-  margin-top: 15px;
-  & button {
-    height: 35px;
-    width: 35px;
-    margin: 0px 6px 0px 0px;
-    color: rgb(85, 112, 134);
-    background-color: #0f212e;
-    border: none;
-    border: 1px solid rgb(85, 112, 134);
-    border-radius: 5px;
-    cursor: pointer;
-    &:hover {
-      color: rgb(139, 163, 182);
-      border: 1px solid rgb(139, 163, 182);
-    }
-  }
-`;
-
 const ChatSubmit = () => {
   return (
     <SubmitDiv>
@@ -68,17 +48,6 @@ const ChatSubmit = () => {
         <input type="text" placeholder="Send a message" />
         <button type="button">Send</button>
       </SendMessage>
-      <Buttons>
-        <button type="button">
-          <i className="fas fa-user-friends"></i>
-        </button>
-        <button type="button">
-          <i className="fas fa-envelope"></i>
-        </button>
-        <button type="button">
-          <i className="fas fa-tag"></i>
-        </button>
-      </Buttons>
     </SubmitDiv>
   );
 };

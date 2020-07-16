@@ -70,7 +70,7 @@ const SidebarMajor = () => {
       </MajorTitleStyle>
       <MajorLeaguesStyle>
         <LeagueItemStyle>
-          <StyledLink to="/premier">
+          <StyledLink to="/premierleague">
             <img src={Champions} alt="Champions" />
             <span>Premiere League</span>
           </StyledLink>

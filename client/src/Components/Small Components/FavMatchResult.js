@@ -69,7 +69,6 @@ const FavMatchResult = ({
   awayscore,
 }) => {
   const dispatch = useDispatch();
-  console.log(status);
   return (
     <EachLeagueStyle>
       <TimerStyle>
