@@ -6,9 +6,10 @@ const ResultsLoader = (props) => (
     speed={2}
     width={1080}
     height={172}
-    viewBox="0 0 100% 100%"
+    // viewBox="0 0 100% 100%"
     // backgroundColor="#213743"
     // foregroundColor="#192C38"
+    preserveAspectRatio="none"
     backgroundColor="#192C38"
     foregroundColor="#213743"
     {...props}
