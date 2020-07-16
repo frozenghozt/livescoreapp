@@ -54,7 +54,7 @@ const setTodaysLeagueData = (data) => ({
 
 export const fetchTodaysLeagueData = () => {
   return apiAction({
-    url: "http://api.football-data.org/v2/matches",
+    url: "https://api.football-data.org/v2/matches",
     onSuccess: setTodaysLeagueData,
     onFailure: () => {
       console.log("Error occured loading articles");
